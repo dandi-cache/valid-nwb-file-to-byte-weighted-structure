@@ -1,0 +1,4 @@
+[submodule "sourcedata/valid-nwb-file-to-array-sizes"]
+	path = sourcedata/valid-nwb-file-to-array-sizes
+	url = https://github.com/dandi-cache/valid-nwb-file-to-array-sizes.git
+	datalad-url = https://github.com/dandi-cache/valid-nwb-file-to-array-sizes.git
