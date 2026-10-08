@@ -69,13 +69,14 @@ def byte_weighted_structure(record: dict, /) -> dict:
 
 def main() -> None:
     dataset, _arguments = dandi_cache.open_dataset()
-    array_sizes = dataset.read_input()
 
+    # The array sizes are read one file at a time, never whole: at full coverage they would take
+    # tens of gigabytes in memory. They come in key order, so the cache is written in that order too.
     dandi_cache.run_full_rebuild(
         dataset,
         build=lambda: [
             {content_id: byte_weighted_structure(record)}
-            for content_id, record in sorted(array_sizes.items())
+            for content_id, record in dataset.iter_input()
             if record.get("walk_status") == "ok"
         ],
     )
