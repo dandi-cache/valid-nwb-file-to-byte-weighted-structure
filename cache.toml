@@ -6,8 +6,12 @@ name = "valid-nwb-file-to-byte-weighted-structure"
 
 # The only input. Every value here is computed from the per-array rows that cache records, so this
 # one never reads the archive.
+#
+# Streamed rather than cloned: that cache's store runs to many gigabytes on disk, so each run reads
+# it over HTTPS, one chunk at a time, at the commit the run pins, with nothing written to disk.
 [[inputs]]
 name = "valid-nwb-file-to-array-sizes"
+stream = true
 
 # No `limit`: this cache is a derivation of its input with no per-item work worth metering. Every
 # run recomputes every file from the rows already in hand and publishes all of them.
