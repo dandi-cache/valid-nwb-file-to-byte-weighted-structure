@@ -9,9 +9,12 @@ permissions:
   packages: read
 
 on:
-  # No schedule yet. This cache runs only when dispatched by hand until its validation sample has
-  # passed and the archive-wide storage of its output is settled; see "Validation" in the README.
-  # Enabling it is adding a `schedule:` here and removing `chain: false` below.
+  schedule:
+    # Once a day. Every run recomputes the whole cache from its input, so it only needs to follow
+    # `valid-nwb-file-to-array-sizes`, which updates at 23 minutes past every sixth hour; this runs
+    # between its 00:23 and 06:23 runs, at a minute of its own, since GitHub delays and drops
+    # scheduled runs that fall on the hour.
+    - cron: "47 3 * * *"
   workflow_dispatch:
     inputs:
       testing:
