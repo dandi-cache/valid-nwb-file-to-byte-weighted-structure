@@ -1,0 +1,3 @@
+2026-10-31T09:58:41Z INFO Logging to /tmp/logs/update_2026-10-31T09-58-41Z.log.
+2026-10-31T09:58:41Z INFO Update valid-nwb-file-to-byte-weighted-structure (base directory /tmp).
+2026-10-31T10:02:07Z INFO Wrote 196910 records to /tmp/derivatives/valid_nwb_file_to_byte_weighted_structure.zarr in 3.4 min (peak memory 890 MiB).
